@@ -8,7 +8,7 @@
    JSF, 
    XHTML,
    CSS,
-   MVC,
+   MVC
    ve
    OOP
 
