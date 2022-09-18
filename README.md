@@ -5,7 +5,8 @@
    
  # Kullanılan Teknolojiler
    Java, 
-   JSF, 
+   JSF,
+   PostgreSQL,
    XHTML,
    CSS,
    MVC,
