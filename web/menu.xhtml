@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <h:form id="menu-form">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/index?faces-redirect=true" value="HomePage"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/login/logout?faces-redirect=true" value="Logout"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/product?faces-redirect=true" value="Product"/>
+                        </li>
+                        <li class="nav-item">             
+                            <h:commandLink styleClass="nav-link" action="/panel/category?faces-redirect=true" value="Category"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/brand?faces-redirect=true" value="Brand"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/stock?faces-redirect=true" value="Stock"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/files?faces-redirect=true" value="Files"/>
+                        </li>  
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/privilege?faces-redirect=true" value="Privilege"/>
+                        </li> 
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/users?faces-redirect=true" value="Users"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/orders?faces-redirect=true" value="Orders"/>
+                        </li> 
+                        <li class="nav-item">
+                            <h:commandLink styleClass="nav-link" action="/panel/cargo?faces-redirect=true" value="Cargo"/>
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </h:form>
+
+
+</ui:composition>

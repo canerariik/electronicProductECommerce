@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template='/template.xhtml'>
+
+    <ui:define name="content">
+        <div class="row">
+            <div class="col">
+                <h:form id="order-form">
+                    <div class="mb-3">           
+                        <label class="form-label">CargoTrackingNO:</label>
+                        <h:selectOneMenu styleClass="form-select" value="#{orderController.entity.cargo}" converter="cargoConverter">
+                            <f:selectItems value="#{cargoController.list}" var="c" itemValue="#{c}" itemLabel="#{c.cargo_tracking_no}" />
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Quantity:</label>
+                        <h:inputText styleClass="form-control" value="#{orderController.entity.quantity}" /> 
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">OrderDate:</label>
+                        <h:inputText styleClass="form-control" value="#{orderController.entity.order_date}" /> 
+                    </div>
+
+                    <div class="mb-3">
+                        <h:commandButton styleClass="btn btn-primary" rendered="#{orderController.entity.id==0}" action="#{orderController.create()}" value="Create" > 
+                            <f:ajax execute="order-form" render="order-table order-form" />
+                        </h:commandButton><br/>
+                        <h:commandButton styleClass="btn btn-secondary" rendered="#{orderController.entity.id!=0}" action="#{orderController.update()}" value="Update">
+                            <f:ajax execute="order-form" render="order-table order-form" />
+                        </h:commandButton><br/>
+                        <h:commandButton styleClass="btn btn-danger" rendered="#{orderController.entity.id!=0}" action="#{orderController.clear()}" value="Clear Form">
+                            <f:ajax execute="@this" render="order-form" />
+                        </h:commandButton>
+                    </div>
+                </h:form> 
+            </div>
+
+            <div class="col">
+                <h:form id="order-table">
+                    <h:dataTable styleClass="table table-striped table-hover" value="#{orderController.list}" var="o">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{o.id}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">TrackingNo</f:facet>
+                                #{o.cargo.cargo_tracking_no}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Quantity:</f:facet>
+                                #{o.quantity}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">OrderDate:</f:facet>
+                                #{o.order_date}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">ADMINISTRATION</f:facet>
+                            <h:commandButton styleClass="btn btn-danger" action="#{orderController.delete(o)}" value="Delete" >
+                                <f:ajax execute="@this" render="order-table" />
+                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-secondary" action="#{orderController.setEntity(o)}" value="Update" >
+                                <f:ajax execute="@this" render="order-form" />
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

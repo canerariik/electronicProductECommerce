@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template='/template.xhtml'>
+
+    <ui:define name="content">
+        <div class="row">
+            <div class="col">
+                <h:form id="brand-form">
+                    <div class="mb-3">
+                        <label class="form-label">Brand:</label>
+                        <h:inputText value="#{brandController.entity.brand_name}" /> 
+                    </div>
+
+                    <div class="mb-3">
+                        <h:commandButton styleClass="btn btn-primary" rendered="#{brandController.entity.id==0}" action="#{brandController.create()}" value="Create" >
+                            <f:ajax execute="brand-form" render="brand-table brand-form"/>
+                        </h:commandButton> 
+                        <h:commandButton styleClass="btn btn-secondary" rendered="#{brandController.entity.id!=0}" action="#{brandController.update()}" value="Update">
+                            <f:ajax execute="brand-form" render="brand-table brand-form"/>
+                        </h:commandButton>
+                        <h:commandButton styleClass="btn btn-danger" rendered="#{brandController.entity.id!=0}" action="#{brandController.clear()}" value="Clear Form">
+                            <f:ajax execute="@this" render="brand-form"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>        
+            </div>
+
+            <div class="col">
+                <h:form id="brand-table">
+                    <h:dataTable styleClass="table table-striped table-hover" value="#{brandController.list}" var="b">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{b.id}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Brand Name</f:facet>
+                                #{b.brand_name}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">ADMINISTRATION</f:facet> 
+                            <h:commandButton styleClass="btn btn-danger" action="#{brandController.delete(b)}" value="Delete" >
+                                <f:ajax execute="@this" render="brand-table"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-secondary" action="#{brandController.setEntity(b)}" value="Update" >
+                                <f:ajax execute="@this" render="brand-form"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>   
+    </ui:define>
+</ui:composition>

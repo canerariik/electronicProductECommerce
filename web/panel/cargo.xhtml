@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template='/template.xhtml'>
+
+    <ui:define name="content">
+        <div class="row">
+            <div class="col">
+                <h:form id="cargo-form">
+                    <div class="mb-3">
+                        <label class="form-label">Users:</label>
+                        <h:selectOneMenu value="#{cargoController.entity.users}" converter="usersConverter">
+                            <f:selectItems value="#{usersController.list}" var="u" itemValue="#{u}" itemLabel="#{u.user_name}" />
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">TrackingNo:</label>
+                        <h:inputText value="#{cargoController.entity.cargo_tracking_no}" /> <br/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">DeliveryDate:</label>
+                        <h:inputText value="#{cargoController.entity.delivery_date}" /><br/>
+                    </div>
+
+                    <div class="mb-3">
+                        <h:commandButton styleClass="btn btn-primary" rendered="#{cargoController.entity.id==0}" action="#{cargoController.create()}" value="Create" >
+                            <f:ajax execute="cargo-form" render="cargo-table cargo-form" />
+                        </h:commandButton><br/>
+                        <h:commandButton styleClass="btn btn-secondary" rendered="#{cargoController.entity.id!=0}" action="#{cargoController.update()}" value="Update">
+                            <f:ajax execute="cargo-form" render="cargo-table cargo-form" />
+                        </h:commandButton><br/>
+                        <h:commandButton styleClass="btn btn-danger" rendered="#{cargoController.entity.id!=0}" action="#{cargoController.clear()}" value="Clear Form">
+                            <f:ajax execute="@this" render="cargo-form" />
+                        </h:commandButton><br/>
+                    </div>
+                </h:form>   
+            </div>
+
+            <div class="col">
+                <h:form id="cargo-table">
+                    <h:dataTable styleClass="table table-striped table-hover" value="#{cargoController.list}" var="c">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{c.id}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">TrackingNo</f:facet>
+                                #{c.cargo_tracking_no}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">DeliveryDate</f:facet>
+                                #{c.delivery_date}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">UserName</f:facet>
+                                #{c.users.user_name}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">ADMINISTRATION</f:facet>
+                            <h:commandButton styleClass="btn btn-danger" action="#{cargoController.delete(c)}" value="Delete" >
+                                <f:ajax execute="@this" render="cargo-table"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-secondary" action="#{cargoController.setEntity(c)}" value="Update" >
+                                <f:ajax execute="@this" render="cargo-form"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
