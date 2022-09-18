@@ -8,7 +8,7 @@
    XHTML,
    CSS,
    MVC,
-   and
+   ve
    OOP
 
 
