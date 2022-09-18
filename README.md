@@ -8,9 +8,10 @@
    JSF, 
    XHTML,
    CSS,
-   MVC
-   ve
+   MVC,
    OOP
+   ve 
+   Bootstrap
 
 
 # İlişkisel Veritabanı Tasarımı
