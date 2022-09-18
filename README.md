@@ -7,6 +7,7 @@
    Java, 
    JSF,
    PostgreSQL,
+   GlassFish,
    XHTML,
    CSS,
    MVC,
