@@ -1,6 +1,6 @@
 # Elektronik Ürün Satış Sitesi
 
-   <p> Elektronik ürün satış sitesine için ilgili admin paneli. </p>
+   <p> Elektronik ürün satış sitesi için kullanışlı admin paneli. </p>
    
    <p> ***Yalnızca OrderPage kısmındaki CRUD operations çalışmıyor ve en son güncellenmediğinden UML diagramda hata olabilir. </p>
    
