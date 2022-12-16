@@ -2,7 +2,7 @@
 
    <p> Elektronik ürün satış sitesi için kullanışlı admin paneli. </p>
    
-   <p> ***Yalnızca OrderPage kısmındaki CRUD operations çalışmıyor ve en son güncellenmediğinden UML diagramda hata olabilir. </p>
+   <p> ***Yalnızca OrderPage kısmındaki Create işlemi çalışmıyor ve sonradan güncellenmediğinden UML diagramda hata olabilir. </p>
    
  # Kullanılan Teknolojiler
    Java, 
