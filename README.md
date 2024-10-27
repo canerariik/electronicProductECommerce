@@ -1,10 +1,10 @@
-# Elektronik Ürün Satış Sitesi
+# Electronic Product Sales Site
 
-   <p> Elektronik ürün satış sitesi için kullanışlı admin paneli. </p>
+   <p> Useful admin panel for electronic product sales site. </p>
    
-   <p> ***Yalnızca OrderPage kısmındaki Create işlemi çalışmıyor ve sonradan güncellenmediğinden UML diagramda hata olabilir. </p>
+   <p> ***Only the Create operation in the OrderPage section does not work and there may be an error in the UML diagram because it is not updated later. </p>
    
- # Kullanılan Teknolojiler
+ # Technologies Used
    Java, 
    JSF,
    PostgreSQL,
@@ -17,6 +17,6 @@
    Bootstrap
 
 
-# İlişkisel Veritabanı Tasarımı
+# Relational Database Design
 
 ![Veri Tabanı Tasarımı](./docs/UML.jpg)
